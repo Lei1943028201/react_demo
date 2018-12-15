@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root1"></div>
+<div id="root2"></div>
+<div id="root3"></div>
+</body>
+<script crossorigin src="../js/development.js"></script>
+<script crossorigin src="../js/react-dom.development.js"></script>
+<script src="../js/babel.min.js"></script>
+<script type="text/babel">
+    // JSX中使用表达式
+    function formatName(user) {
+        return user.firstName +  user.lastName;
+    }
+
+    const user = {
+        firstName: '李',
+        lastName: '小龙'
+    };
+
+    const element1 = (
+        <h1>
+            Hello, {formatName(user)}!
+        </h1>
+    );
+
+    ReactDOM.render(
+        element1,
+        document.getElementById('root1')
+    );
+
+    // JSX属性
+    const element2 = <div tabIndex="0"></div>;
+    const element3 = <img src={element1}></img>;
+
+    ReactDOM.render(
+        element2,
+        document.getElementById('root2')
+    );
+    ReactDOM.render(
+        element3,
+        document.getElementById('root3')
+    );
+</script>
+</html>
