@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script crossorigin src="../js/development.js"></script>
+<script crossorigin src="../js/react-dom.development.js"></script>
+<script src="../js/babel.min.js"></script>
+<script type="text/babel">
+    class Clock extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                date: new Date()
+            };
+        }
+
+        componentDidMount() {
+            //加载定时器
+            this.timerID = setInterval(
+                () => this.tick(),
+                1000
+            );
+        }
+        componentWillUnmount() {
+            // 清除定时器
+            clearInterval(this.timerID);
+        }
+        tick() {
+            this.setState({
+                date: new Date()
+            });
+        }
+        render() {
+            return (
+                <div>
+                    <h1>Hello, world!</h1>
+                    <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <Clock />,
+        document.getElementById('root')
+    );
+</script>
+</html>
